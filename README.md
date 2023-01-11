@@ -259,7 +259,6 @@ display(Markdown(build_table([stmt2, stmt3, stmt4, stmt1])))
 ```
 Output:
 
-```
 | B | A | C | (A ⊖ C) | (B \ A) | ((A ⊖ C) ⊖ (B \ A)) | ((A ∨ B) ⊖ C) |
 | :-:|:-:|:-:|:-------:|:-------:|:-------------------:|:-------------: |
 | T | F | T | F | T | F | F |
@@ -271,5 +270,4 @@ Output:
 | T | T | T | F | F | F | F |
 | F | T | T | F | F | F | F |
 
-```
 [↑Back to top](#toc)
