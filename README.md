@@ -68,7 +68,7 @@ b = Value("B")
 c = Value("C")
 
 stmt = _or(_and(a, b), c)
-display(Markdown(build_table([stmt]))
+display(Markdown(build_table([stmt])))
 ```
 
 Outputs:
