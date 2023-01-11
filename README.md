@@ -77,5 +77,13 @@ Outputs:
 | T | F | F | F |
 | F | F | T | T |
 | T | T | T | T |
-| F | T | T | T |'
+| F | T | T | T |
+```
+
+Or you could separate the full statement into two component statements to make it easier to analyze:
+
+```
+stmt1 = _and(a,b)
+stmt2 = _or(_and(a,b), c)
+display(Markdown(build_table([stmt1, stmt2])))
 ```
