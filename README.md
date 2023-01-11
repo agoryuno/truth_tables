@@ -1,7 +1,14 @@
 # truth_tables
 A module to build truth tables for logical statements.
 
-# Installing
+##### Contents
+[Installing](#installing)
+[Creating statements](#creating-statements)
+[Printing truth tables](#printing-truth-tables)
+[Testing equivalence](#testing-equivalence)
+
+
+## Installing
 
 You can install directly from the repo with:
 
@@ -9,7 +16,7 @@ You can install directly from the repo with:
 pip install git+https://github.com/agoryuno/truth_tables
 ```
 
-# Creating statements
+## Creating statements
 
 The module defines basic logical operators:
 
@@ -56,7 +63,7 @@ repr(_xor(q, _and(_not(p), r)))
 
 Outputs: `(Q + (¬P Ʌ R))`
 
-# Printing truth tables
+## Printing truth tables
 
 Function `build_table()` is used to construct a Markdown representation of a truth table.
 `build_table()` takes an iterable with logical statements and returns a table with a column
@@ -139,7 +146,7 @@ Output:
 | T | T | T | T | F | F | F | F |
 | F | T | T | T | F | F | F | F |
 
-# Testing equivalence
+## Testing equivalence
 
 Function `test_equiv()` can be used to test the logical equivalence of multiple statements.
 It takes a list of statements as its only argument and returns True if all statements are
