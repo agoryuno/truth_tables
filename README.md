@@ -159,7 +159,7 @@ Function `test_equiv()` can be used to test the logical equivalence of multiple 
 It takes a list of statements as its only argument and returns True if all statements are
 equivalent for all combinations of their boolean values, and False otherwise.
 
-Using for inspiration exercise 14 from section 1.4 of the "How To Prove It: A Structured Approach. Second Edition" book by
+Taking inspiration from exercise 14 from section 1.4 of the "How To Prove It: A Structured Approach. Second Edition" book by
 Daniel Velleman: 
 
 a) are `((A ∨ B) ⊖ C)` and `((A ⊖ C) ⊖ (B \ A))` equivalent:
