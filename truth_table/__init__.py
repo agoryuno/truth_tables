@@ -1,5 +1,5 @@
 from typing import overload, List
-from itertools import combinations, product, permutations
+from itertools import combinations
 
 
 def _to_symbol(val):
@@ -148,7 +148,7 @@ class _symd(BinaryOperation):
 	def __call__(self):
 		super().__call__()
 		return (self.left() and not self.right()) or (self.right() and not self.left)
-		
+
 
 def build_table(stmts: List):
 	all_vals = {val for stmt in stmts for val in stmt.values}
