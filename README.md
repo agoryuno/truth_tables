@@ -43,12 +43,12 @@ A value can be set True or False:
 a.true
 a.false
 ```
-A statement `A not B` can be created with:
+A statement `A and B` can be created with:
 
 ```
 a = Value("A")
 b = Value("B")
-_not(a, b)
+_and(a, b)
 ```
 
 Two more examples:
