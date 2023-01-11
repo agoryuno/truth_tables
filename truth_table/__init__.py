@@ -14,6 +14,9 @@ class Statement:
 	def deconstruct(self):
 		return self
 
+	def __eq__(self, other):
+		return test_equiv([self, other])
+
 
 class Value(Statement):
 
