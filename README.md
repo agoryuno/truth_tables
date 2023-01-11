@@ -3,11 +3,8 @@ A module to build truth tables for logical statements.
 
 ##### Contents
 - [Installing](#installing)
-
 - [Creating statements](#creating-statements)
-
 - [Printing truth tables](#printing-truth-tables)
-
 - [Testing equivalence](#testing-equivalence)
 
 
