@@ -170,7 +170,7 @@ def build_table(stmts: List):
 		row_s = " | ".join(row_s)
 		table.append("| " + row_s + " |")
 	
-	return "\n".join(table)	
+	return r"\n".join(table)	
 
 
 if __name__ == "__main__":
