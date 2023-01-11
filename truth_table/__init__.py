@@ -29,8 +29,8 @@ class Value(Statement):
 		self.__value = None
 
 	def __hash__(self):
-		return self.name
-		
+		return hash(self.name)
+
 	def __call__(self):
 		return self.__value
 
