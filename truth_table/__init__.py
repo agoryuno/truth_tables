@@ -56,7 +56,9 @@ class BinaryOperation(Operation):
 		self.right = right
 
 	def __call__(self) -> bool:
-		assert self.left() is not None and self.right() is not None
+		assert self.left() is not None and self.right() is not None, \
+			("The statement's operands haven't been set to either True or False. "
+				"Set them with val.true/val.false")
 
 	def __repr__(self):
 		name = super().__repr__()
@@ -74,7 +76,9 @@ class UnaryOperation(Operation):
 		self.operand = operand
 
 	def __call__(self) -> bool:
-		assert self.operand() is not None
+		assert self.operand() is not None,
+		("The statement's operand had't been set to either True or False. "
+				"Set it with val.true/val.false")
 
 	def __repr__(self):
 		name = super().__repr__()
