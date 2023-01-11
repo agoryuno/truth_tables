@@ -16,6 +16,7 @@ class Statement:
 
 	def __eq__(self, other):
 		if isinstance(other, Value):
+			print (other)
 			assert other() is not None, ("You are trying to test equivalence against "
 				"an unitialized Value(). Initialize it by using val.true/val.false" )
 
