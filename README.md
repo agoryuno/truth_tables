@@ -139,3 +139,26 @@ Output:
 | T | T | T | T | F | F | F | F |
 | F | T | T | T | F | F | F | F |
 
+# Testing equivalence
+
+Function `test_equiv()` can be used to test the logical equivalence of multiple statements.
+It takes a list of statements as its only argument and returns True if all statements are
+equivalent for all combinations of their boolean values, and False otherwise.
+
+Following is the test of two statements: `((A ∨ B) ⊖ C)` and `((A ⊖ C) ⊖ (B \ A))`:
+
+```
+a, b, c = Value("A"), Value("B"), Value("C")
+
+stmt1 = _symd(_or(a, b), c)
+
+stmt2 = _symd(a, c)
+stmt3 = _diff(b, a)
+stmt4 = _symd(stmt2, stmt3)
+
+test_equiv([stmt1, stmt4])
+```
+
+Output:
+
+```False```
