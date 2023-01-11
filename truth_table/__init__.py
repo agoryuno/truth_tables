@@ -11,6 +11,9 @@ class Statement:
 	def stmt(self, *args):
 		return self.__class__(*args)
 
+	def deconstruct(self):
+		return self
+
 
 class Value(Statement):
 
@@ -47,9 +50,6 @@ class Operation(Statement):
 		if hasattr(self.__class__, "name"):
 			name = self.name
 		return name
-
-	def deconstruct(self):
-		return self
 
 
 class BinaryOperation(Operation):
@@ -108,7 +108,7 @@ class _nand(BinaryOperation):
 		return not (not self.left()  and not self.right())
 
 	def deconstruct(self):
-		return _not(_and(_not(self.left)), _not(self.right))
+		return _not(_and(_not(self.left.deconstruct())), _not(self.right.deconstruct()))
 
 
 class _nor(BinaryOperation):
@@ -119,7 +119,7 @@ class _nor(BinaryOperation):
 		return not self.left() and not self.right()
 
 	def deconstruct(self):
-		return _and(_not(self.left), _not(self.right))
+		return _and(_not(self.left.deconstruct()), _not(self.right.deconstruct()))
 
 
 class _and(BinaryOperation):
@@ -147,7 +147,7 @@ class _xor(BinaryOperation):
 				and self.right())
 
 	def deconstruct(self):
-		return _and(_or(self.left, self.right), _not(self.left))
+		return _and(_or(self.left.deconstruct(), self.right.deconstruct()), _not(self.left.deconstruct()))
 
 
 class _diff(BinaryOperation):
@@ -158,7 +158,7 @@ class _diff(BinaryOperation):
 		return self.left() and (not self.right())
 
 	def deconstruct(self):
-		return _and(self.left, _not(self.right))
+		return _and(self.left.deconstruct(), _not(self.right.deconstruct()))
 
 
 class _symd(BinaryOperation):
@@ -169,7 +169,8 @@ class _symd(BinaryOperation):
 		return (self.left() and not self.right()) or (self.right() and not self.left)
 
 	def deconstruct(self):
-		return _or(_and(self.left, _not(self.right)), _and(self.right, _not(self.left)))
+		return _or(_and(self.left.deconstruct(), _not(self.right.deconstruct())), 
+			_and(self.right.deconstruct(), _not(self.left.deconstruct())))
 
 
 def build_table(stmts: List):
