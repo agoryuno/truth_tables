@@ -1,11 +1,13 @@
 # truth_tables
 A module to build truth tables for logical statements.
 
+<a name="toc" />
 ##### Contents
 - [Installing](#installing)
 - [Creating statements](#creating-statements)
 - [Printing truth tables](#printing-truth-tables)
 - [Testing equivalence](#testing-equivalence)
+
 
 
 ## Installing
@@ -63,6 +65,7 @@ repr(_xor(q, _and(_not(p), r)))
 
 Outputs: `(Q + (¬P Ʌ R))`
 
+[↑to top](#toc)
 ## Printing truth tables
 
 Function `build_table()` is used to construct a Markdown representation of a truth table.
