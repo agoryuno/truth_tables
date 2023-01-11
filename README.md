@@ -152,6 +152,7 @@ Output:
 | F | T | T | T | F | F | F | F |
 
 ## Testing equivalence
+[↑to top](#toc)
 
 Function `test_equiv()` can be used to test the logical equivalence of multiple statements.
 It takes a list of statements as its only argument and returns True if all statements are
