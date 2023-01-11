@@ -2,6 +2,7 @@
 A module to build truth tables for logical statements.
 
 <a name="toc" />
+
 ##### Contents
 - [Installing](#installing)
 - [Creating statements](#creating-statements)
