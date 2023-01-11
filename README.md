@@ -48,7 +48,7 @@ Outputs: `(Q + (¬P Ʌ R))`
 
 Function `build_table()` is used to construct a Markdown representation of a truth table.
 `build_table()` takes an iterable with logical statements and returns a table with a column
-for each Value() used in all of the statements, and a column for each individual statement. 
+for each `Value()` used in all of the statements, and a column for each individual statement. 
 
 Following is a complete example of creating the truth table for expression: `(A and B) or C`.
 Note the extra steps needed to print the table in a notebook.
@@ -63,7 +63,6 @@ c = Value("C")
 
 stmt = _or(_and(a, b), c)
 display(Markdown(build_table([stmt]))
-
 ```
 
 Outputs:
@@ -78,7 +77,7 @@ Outputs:
 | F | F | T | T |
 | T | T | T | T |
 | F | T | T | T |
-```
+
 
 Or you could separate the full statement into two component statements to make it easier to analyze:
 
