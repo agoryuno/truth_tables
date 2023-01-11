@@ -119,6 +119,9 @@ yields:
 This can be useful both as a means of reminding yourself what exactly a particular operation
 does, and as the first step to analyzing statements by way of using truth tables.
 
+Using the `deconstruct()` method on a `Value()` object or an elementary statement is perfectly safe - 
+it will simply return the value or the statement itself.
+
 ## Printing truth tables
 [↑to top](#toc)
 
