@@ -110,7 +110,7 @@ class _nor(BinaryOperation):
 
 
 class _and(BinaryOperation):
-	name = " \u0245 "
+	name = " \u2227 "
 
 	def __call__(self):
 		super().__call__()
@@ -118,7 +118,7 @@ class _and(BinaryOperation):
 
 
 class _or(BinaryOperation):
-	name = " V "
+	name = " \u2228 "
 
 	def __call__(self):
 		super().__call__()
@@ -134,6 +134,21 @@ class _xor(BinaryOperation):
 				and self.right())
 
 
+class _diff(BinaryOperation):
+	name = " \\ "
+
+	def __call__(self):
+		super().__call__()
+		return self.left() and (not self.right())
+
+
+class _symd(BinaryOperation):
+	name = " \u2296 "
+
+	def __call__(self):
+		super().__call__()
+		return (self.left() and not self.right()) or (self.right() and not self.left)
+		
 
 def build_table(stmts: List):
 	all_vals = {val for stmt in stmts for val in stmt.values}
