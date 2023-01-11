@@ -6,6 +6,7 @@ A module to build truth tables for logical statements.
 ##### Contents
 - [Installing](#installing)
 - [Creating statements](#creating-statements)
+- [Evaluating statements](#evaluating-statements)
 - [Printing truth tables](#printing-truth-tables)
 - [Testing equivalence](#testing-equivalence)
 
@@ -67,6 +68,33 @@ repr(_xor(q, _and(_not(p), r)))
 
 Outputs: `(Q + (¬P Ʌ R))`
 
+## Evaluating statements
+[↑to top](#toc)
+
+Once a statement is created it can be evaluated for the given values. Consider a statement
+with three values: `((A ∨ C) ⊖ (B \ C))`
+
+```
+a, b, c = Value("A"), Value("B"), Value("C")
+
+stmt = _symd(_or(a, c), _diff(b, c))
+```
+
+The `stmt` object can be evaluated by setting the values and calling it as a function, like so:
+
+```
+a.true
+b.true
+c.false
+stmt()
+```
+
+Output:
+
+```False```
+
+Trying to evaluate a statement without properly initializing it's operand values will result
+in an AssertionError.
 
 ## Printing truth tables
 [↑to top](#toc)
