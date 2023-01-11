@@ -66,8 +66,9 @@ repr(_xor(q, _and(_not(p), r)))
 
 Outputs: `(Q + (¬P Ʌ R))`
 
-[↑to top](#toc)
+
 ## Printing truth tables
+[↑to top](#toc)
 
 Function `build_table()` is used to construct a Markdown representation of a truth table.
 `build_table()` takes an iterable with logical statements and returns a table with a column
