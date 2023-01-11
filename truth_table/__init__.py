@@ -15,6 +15,10 @@ class Statement:
 		return self
 
 	def __eq__(self, other):
+		if isinstance(other, Value):
+			assert other is not None, ("You are trying to test equivalence against "
+				"an unitialized Value(). Initialize it by using val.true/val.false" )
+
 		return test_equiv([self, other])
 
 
@@ -26,6 +30,11 @@ class Value(Statement):
 
 	def __call__(self):
 		return self.__value
+
+	def __eq__(self, other):
+		assert self.__value is not None, ("You are trying to test equivalence of "
+			"an unitialized Value(). Initialize it by using val.true/val.false" )
+		return super().__eq__(other)
 
 	@property
 	def true(self):
