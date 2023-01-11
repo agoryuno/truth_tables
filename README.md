@@ -145,7 +145,10 @@ Function `test_equiv()` can be used to test the logical equivalence of multiple 
 It takes a list of statements as its only argument and returns True if all statements are
 equivalent for all combinations of their boolean values, and False otherwise.
 
-Following is the test of two statements: `((A ∨ B) ⊖ C)` and `((A ⊖ C) ⊖ (B \ A))`:
+Using for inspiration exercise 14 from section 1.4 of the "How To Prove It: A Structured Approach. Second Edition" book by
+Daniel Velleman: 
+
+a) are `((A ∨ B) ⊖ C)` and `((A ⊖ C) ⊖ (B \ A))` equivalent:
 
 ```
 a, b, c = Value("A"), Value("B"), Value("C")
@@ -161,4 +164,35 @@ test_equiv([stmt1, stmt4])
 
 Output:
 
-```False```
+`False`
+
+b) `((A ∧ B) ⊖ C)` and `((A ⊖ C) ⊖ (A \ B))`:
+
+```
+stmt1 = _symd(_or(a, b), c)
+
+stmt2 = _symd(a, c)
+stmt3 = _diff(b, a)
+stmt4 = _symd(stmt2, stmt3)
+
+test_equiv([stmt1, stmt4])
+```
+
+Output:
+
+`True`
+
+c) `((A \ B) ⊖ C)` and `((A ⊖ C) ⊖ (A ∧ B))`:
+
+```
+stmt1 = _symd(_diff(a, b), c)
+stmt2 = _symd(a, c)
+stmt3 = _and(a, b)
+stmt4 = _symd(stmt2, stmt3)
+```
+
+Output:
+
+`True`
+
+test_equiv([stmt1, stmt4])
