@@ -1,5 +1,5 @@
 from typing import overload, List
-from itertools import combinations
+from itertools import combinations, product, permutations
 
 
 def _to_symbol(val):
@@ -76,13 +76,17 @@ class UnaryOperation(Operation):
 	def __call__(self) -> bool:
 		assert self.operand() is not None
 
+	def __repr__(self):
+		name = super().__repr__()
+		return f"{self.name}{repr(self.operand)}"
+
 	@property
 	def values(self):
 		return tuple({val for val in self.operand.values})
 
 
 class _not(UnaryOperation):
-	name = "NOT"
+	name = "\u00ac"
 
 	def __call__(self):
 		super().__call__()
@@ -139,12 +143,10 @@ def build_table(stmts: List):
 	vals = list(all_vals)
 
 	val_combos = [i for val in vals for i in [(True, val), (False, val)] ]
+	rows = [val for val in combinations(val_combos, len(all_vals))]
 
-	rows = [val for val in combinations(val_combos, 2)]
-
-	rows = [r for r in filter(lambda row: len({v[1] for v in row}) > 1, rows)]
-
-	rows = [{val.name: b for b, val in row} for row in rows]
+	a = list({val for val in combinations([True, False]*len(vals), len(vals))})
+	rows = [{t[0].name : t[1] for t in tuple(zip(row[0], row[1]))} for row in zip([vals]*len(a), a)]
 	
 	header = [repr(val) for val in vals] + [repr(stmt) for stmt in stmts]
 
@@ -174,14 +176,6 @@ def build_table(stmts: List):
 if __name__ == "__main__":
 	a = Value("A")
 	b = Value("B")
+	c = Value("C")
 
-	c = _and(a, b)
-	d = _or(a, b)
-	e = _xor(a,b)
-	f = _nand(a, b)
-	g = _nor(a, b)
-	h = _not(c)
-
-	r = f.stmt(c, d)
-
-	print (build_table([r, e]))
+	print (build_table([_and(_or(a,c), _not(b))]))
