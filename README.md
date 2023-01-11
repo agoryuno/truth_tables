@@ -265,6 +265,22 @@ Output:
 
 `True`
 
+Equivalence of two statements can be tested with the standard "==" operation. For example:
+
+```
+_symd(a, _xor(b, c)) == _and(_xor(b,c), a)
+```
+
+Output:
+
+```
+False
+```
+
+You can test values and operations, but values need to be set for that. An unitialized value in
+an equivalence test will raise an AssertionError. This is to enforce the difference between a logically valid 
+false equivalence test result and a false result due to an unitialized value.
+
 ## Analyze equivalence
 [↑to top](#toc)
 
