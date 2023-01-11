@@ -43,7 +43,7 @@ A value can be set True or False:
 a.true
 a.false
 ```
-An expression `A not B` can be created with:
+A statement `A not B` can be created with:
 
 ```
 a = Value("A")
