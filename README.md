@@ -26,6 +26,12 @@ value's name as its only argument:
 
 ```a = Value("A")```
 
+A value can be set True or False:
+
+```
+a.true
+a.false
+```
 An expression `A not B` can be created with:
 
 ```
