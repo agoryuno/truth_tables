@@ -15,6 +15,7 @@ A module to build truth tables for logical statements and more!
 
 
 ## Installing
+[↑to top](#toc)
 
 You can install directly from the repo with:
 
