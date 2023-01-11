@@ -7,6 +7,7 @@ A module to build truth tables for logical statements.
 - [Installing](#installing)
 - [Creating statements](#creating-statements)
 - [Evaluating statements](#evaluating-statements)
+- [Elementary operations](#elementary-operations)
 - [Printing truth tables](#printing-truth-tables)
 - [Testing equivalence](#testing-equivalence)
 - [Analyze equivalence](#analyze-equivalence)
@@ -96,6 +97,27 @@ Output:
 
 Trying to evaluate a statement without properly initializing it's operand values will result
 in an AssertionError.
+
+## Elementary operations
+[↑to top](#toc)
+
+All statements, except for values and elementary operations: `_and()`, `_or()`, and `_not()`,
+can be represented in terms of elementary operations and values by using their `deconstruct()` method.
+
+For instance, "deconstructing" the statement `(A ⊖ (B + C))`
+
+```
+_symd(a, _xor(b, c)).deconstruct()
+```
+
+yields:
+
+```
+((A ∧ ¬((B ∨ C) ∧ ¬B)) ∨ (((B ∨ C) ∧ ¬B) ∧ ¬A))
+```
+
+This can be useful both as a means of reminding yourself what exactly a particular operation
+does, and as the first step to analyzing statements by way of using truth tables.
 
 ## Printing truth tables
 [↑to top](#toc)
@@ -269,5 +291,7 @@ Output:
 | F | F | T | F | F | F | F |
 | T | T | T | F | F | F | F |
 | F | T | T | F | F | F | F |
+
+The only difference between the two statements is in the 5th row where `B=True`, `A=False` and `C=False`.
 
 [↑Back to top](#toc)
