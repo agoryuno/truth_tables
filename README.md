@@ -23,7 +23,8 @@ You can install directly from the repo with:
 pip install git+https://github.com/agoryuno/truth_tables
 ```
 
-## Creating statements [↑to top](#toc)
+## Creating statements 
+[↑to top](#toc)
 
 
 The module defines basic logical operations:
