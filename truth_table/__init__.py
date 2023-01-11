@@ -48,6 +48,9 @@ class Operation(Statement):
 			name = self.name
 		return name
 
+	def deconstruct(self):
+		return self
+
 
 class BinaryOperation(Operation):
 
@@ -102,7 +105,10 @@ class _nand(BinaryOperation):
 
 	def __call__(self):
 		super().__call__()
-		return not (not self.left()  and not self.right()) 
+		return not (not self.left()  and not self.right())
+
+	def deconstruct(self):
+		return _not(_and(_not(self.left)), _not(self.right))
 
 
 class _nor(BinaryOperation):
@@ -111,6 +117,9 @@ class _nor(BinaryOperation):
 	def __call__(self):
 		super().__call__()
 		return not self.left() and not self.right()
+
+	def deconstruct(self):
+		return _and(_not(self.left), _not(self.right))
 
 
 class _and(BinaryOperation):
@@ -137,6 +146,9 @@ class _xor(BinaryOperation):
 		return (self.left() or self.right()) and not (self.left() 
 				and self.right())
 
+	def deconstruct(self):
+		return _and(_or(self.left, self.right), _not(self.left))
+
 
 class _diff(BinaryOperation):
 	name = " \\ "
@@ -145,6 +157,9 @@ class _diff(BinaryOperation):
 		super().__call__()
 		return self.left() and (not self.right())
 
+	def deconstruct(self):
+		return _and(self.left, _not(self.right))
+
 
 class _symd(BinaryOperation):
 	name = " \u2296 "
@@ -152,6 +167,9 @@ class _symd(BinaryOperation):
 	def __call__(self):
 		super().__call__()
 		return (self.left() and not self.right()) or (self.right() and not self.left)
+
+	def deconstruct(self):
+		return _or(_and(self.left, _not(self.right)), _and(self.right, _not(self.left)))
 
 
 def build_table(stmts: List):
