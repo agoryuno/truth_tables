@@ -105,3 +105,31 @@ Output:
 | F | F | T | F | F |
 | T | T | T | T | T |
 | F | T | T | T | T |
+
+And you can certainly use statements to construct other statements:
+
+```
+a,b,c = Value("A"), Value("B"), Value("C")
+
+stmt1 = _or(a, b)
+stmt2 = _symd(stmt1, c)
+stmt3 = _symd(a, c)
+stmt4 = _diff(b, a)
+stmt5 = _symd(stmt3, stmt4)
+
+display(Markdown(build_table([stmt1, stmt3, stmt4, stmt5, stmt2])))
+```
+
+Output:
+
+| B | A | C | (A ∨ B) | (A ⊖ C) | (B \ A) | ((A ⊖ C) ⊖ (B \ A)) | ((A ∨ B) ⊖ C) |
+| :-:|:-:|:-:|:-------:|:-------:|:-------:|:-------------------:|:-------------: |
+| T | F | T | T | F | T | F | F |
+| T | T | F | T | T | F | T | T |
+| F | T | F | T | T | F | T | T |
+| F | F | F | F | F | F | F | F |
+| T | F | F | T | F | T | F | T |
+| F | F | T | F | F | F | F | F |
+| T | T | T | T | F | F | F | F |
+| F | T | T | T | F | F | F | F |
+
