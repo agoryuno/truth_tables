@@ -1,5 +1,5 @@
 # truth_tables
-A module to build truth tables for logical statements.
+A module to build truth tables for logical statements and more!
 
 <a name="toc" />
 
