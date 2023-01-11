@@ -22,7 +22,7 @@ pip install git+https://github.com/agoryuno/truth_tables
 ## Creating statements
 [↑to top](#toc)
 
-The module defines basic logical operators:
+The module defines basic logical operations:
 
 ```_and(), _or(), _xor(), _nand(), _nor(), _not()```
 
