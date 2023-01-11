@@ -155,9 +155,6 @@ def build_table(stmts: List):
 
 	vals = list(all_vals)
 
-	val_combos = [i for val in vals for i in [(True, val), (False, val)] ]
-	rows = [val for val in combinations(val_combos, len(all_vals))]
-
 	a = list({val for val in combinations([True, False]*len(vals), len(vals))})
 	rows = [{t[0].name : t[1] for t in tuple(zip(row[0], row[1]))} for row in zip([vals]*len(a), a)]
 	
