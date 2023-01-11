@@ -15,6 +15,12 @@ The module defines basic logical operators:
 
 ```_and(), _or(), _xor(), _nand(), _nor(), _not()```
 
+and two operations on sets: `_symd()` - symmetric difference and 
+`_diff()` - difference between two sets.
+
+Unions and intersections can be represented with `_or()` and `_and()`
+respectively.
+
 Values are created using class `Value()` that takes the
 value's name as its only argument:
 
