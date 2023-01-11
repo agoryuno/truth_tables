@@ -203,10 +203,12 @@ stmt1 = _symd(_diff(a, b), c)
 stmt2 = _symd(a, c)
 stmt3 = _and(a, b)
 stmt4 = _symd(stmt2, stmt3)
+
+test_equiv([stmt1, stmt4])
 ```
 
 Output:
 
 `True`
 
-test_equiv([stmt1, stmt4])
+
