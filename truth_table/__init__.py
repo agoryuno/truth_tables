@@ -76,7 +76,7 @@ class UnaryOperation(Operation):
 		self.operand = operand
 
 	def __call__(self) -> bool:
-		assert self.operand() is not None,
+		assert self.operand() is not None, \
 		("The statement's operand had't been set to either True or False. "
 				"Set it with val.true/val.false")
 
