@@ -129,7 +129,7 @@ Function `build_table()` is used to construct a Markdown representation of a tru
 `build_table()` takes an iterable with logical statements and returns a table with a column
 for each `Value()` used in all of the statements, and a column for each individual statement. 
 
-Following is a complete example of creating the truth table for expression: `(A and B) or C`.
+Following is a complete example of creating the truth table for expression: `((A ∧ B) ∨ C)`.
 Note the extra steps needed to print the table in a notebook.
 
 ```
