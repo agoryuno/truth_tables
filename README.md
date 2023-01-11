@@ -79,7 +79,7 @@ Following is a complete example of creating the truth table for expression: `(A 
 Note the extra steps needed to print the table in a notebook.
 
 ```
-from IPython.display import display, Markdown, Latex
+from IPython.display import display, Markdown
 from truth_table import _and, _or, _not, _xor, Value, build_table
 
 a = Value("A")
