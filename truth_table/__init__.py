@@ -151,9 +151,7 @@ class _symd(BinaryOperation):
 
 
 def build_table(stmts: List):
-	all_vals = {val for stmt in stmts for val in stmt.values}
-
-	vals = list(all_vals)
+	vals = list({val for stmt in stmts for val in stmt.values})
 
 	a = list({val for val in combinations([True, False]*len(vals), len(vals))})
 	rows = [{t[0].name : t[1] for t in tuple(zip(row[0], row[1]))} for row in zip([vals]*len(a), a)]
@@ -183,9 +181,31 @@ def build_table(stmts: List):
 	return "\n".join(table)	
 
 
+def test_equiv(stmts: List):
+	assert all([isinstance(stmt, Operation) for stmt in stmts])
+
+	vals = list({val for stmt in stmts for val in stmt.values})
+	a = list({val for val in combinations([True, False]*len(vals), len(vals))})
+	rows = [{t[0].name : t[1] for t in tuple(zip(row[0], row[1]))} for row in zip([vals]*len(a), a)]
+
+	results = []
+
+	for row in rows:
+		for val in vals:
+			if row[val.name]:
+				val.true
+			else:
+				val.false
+		result = {stmt() for stmt in stmts}
+		results.append(len(result) == 1)
+
+	return all(results)
+
+
 if __name__ == "__main__":
 	a = Value("A")
 	b = Value("B")
 	c = Value("C")
 
-	print (build_table([_and(_or(a,c), _not(b))]))
+	print (test_equiv([_and(a,c), _and(a,c)]))
+	print (test_equiv([_and(a,c), _or(a,c)]))
