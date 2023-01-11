@@ -152,8 +152,6 @@ class _symd(BinaryOperation):
 
 def build_table(stmts: List):
 	all_vals = {val for stmt in stmts for val in stmt.values}
-	#each_vals = [{val for val in stmt.values} for stmt in stmts]
-	#assert all([vals == all_vals for vals in each_vals])
 
 	vals = list(all_vals)
 
