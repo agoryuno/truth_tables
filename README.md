@@ -9,6 +9,7 @@ A module to build truth tables for logical statements.
 - [Evaluating statements](#evaluating-statements)
 - [Printing truth tables](#printing-truth-tables)
 - [Testing equivalence](#testing-equivalence)
+- [Analyze equivalence](#analyze-equivalence)
 
 
 
@@ -239,5 +240,36 @@ Output:
 
 `True`
 
+## Analyze equivalence
+[↑to top](#toc)
 
+We can use truth tables to confirm the `test_equiv()` result of a) in the previous section.
+Namely, `((A ∨ B) ⊖ C)` and `((A ⊖ C) ⊖ (B \ A))` not being equivalent.
+
+```
+a, b, c = Value("A"), Value("B"), Value("C")
+
+stmt1 = _symd(_or(a, b), c)
+
+stmt2 = _symd(a, c)
+stmt3 = _diff(b, a)
+stmt4 = _symd(stmt2, stmt3)
+
+display(Markdown(build_table([stmt2, stmt3, stmt4, stmt1])))
+```
+Output:
+
+```
+| B | A | C | (A ⊖ C) | (B \ A) | ((A ⊖ C) ⊖ (B \ A)) | ((A ∨ B) ⊖ C) |
+| :-:|:-:|:-:|:-------:|:-------:|:-------------------:|:-------------: |
+| T | F | T | F | T | F | F |
+| T | T | F | T | F | T | T |
+| F | T | F | T | F | T | T |
+| F | F | F | F | F | F | F |
+| T | F | F | F | T | F | T |
+| F | F | T | F | F | F | F |
+| T | T | T | F | F | F | F |
+| F | T | T | F | F | F | F |
+
+```
 [↑Back to top](#toc)
