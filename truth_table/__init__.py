@@ -115,12 +115,12 @@ class _not(UnaryOperation):
 		return not self.operand()
 
 
-def _if(BinaryOperation):
+class _if(BinaryOperation):
 	"""
 	Logical IF(A, B) is false if A is True and B is False.
 	True everywhere else.
 	"""
-	
+
 	name = r" \u21d2 "
 
 	def __call__(self):
