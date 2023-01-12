@@ -24,7 +24,7 @@ class MyTests(unittest.TestCase):
         for av, bv in vals:
             set_var(self.a, av)
             set_var(self.b, bv)
-            self.assertEqual(stmt1 == stmt2)
+            self.assertEqual(stmt1, stmt2)
 
     def test_method2(self):
         ...

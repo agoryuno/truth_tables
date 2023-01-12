@@ -115,6 +115,23 @@ class _not(UnaryOperation):
 		return not self.operand()
 
 
+class _iff(BinaryOperation):
+	"""
+	Logical biconditional IFF(A, B) is True if either
+	both A and B are True or both are False
+	"""
+
+	name = r" \u21d4 "
+
+	def __call__(self):
+		super().__call__()
+		return (not self.left() and not self.right()) or (self.left() and self.right)
+
+	def deconstruct(self):
+		return _or( _and(_not(self.left.deconstruct()), _not(self.right.deconstruct())),
+			_and(self.left.deconstruct(), self.right.deconstruct()))
+		
+
 class _if(BinaryOperation):
 	"""
 	Logical IF(A, B) is false if A is True and B is False.
