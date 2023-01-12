@@ -27,9 +27,9 @@ pip install git+https://github.com/agoryuno/truth_tables
 [↑to top](#toc)
 
 
-The module defines basic logical operations:
+The module defines basic logical connectives:
 
-```_and(), _or(), _xor(), _nand(), _nor(), _not()```
+```_and(), _or(), _xor(), _nand(), _nor(), _not(), _if(), _iff()```
 
 and two operations on sets: `_symd()` - symmetric difference and 
 `_diff()` - difference between two sets.
